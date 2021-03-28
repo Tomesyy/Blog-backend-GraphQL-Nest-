@@ -6,9 +6,15 @@ type Post {
     updatedAt: String
 }
 
+type ApiResponse {
+    status: Int!
+    message: String!
+    data: [Post!]
+}
+
 type Query {
-    post(id: Int!): Post
-    posts: [Post!]
+    post(id: Int!): ApiResponse!
+    posts: ApiResponse!
 }
 
 input newPost {
@@ -17,9 +23,9 @@ input newPost {
 } 
 
 type Mutation {
-    createPost(payload: newPost!): Post
-    updatePost(id: Int!, payload: newPost!): Post
-    deletePost(id: Int!): String
+    createPost(payload: newPost!): ApiResponse!
+    updatePost(id: Int!, payload: newPost!): ApiResponse!
+    deletePost(id: Int!): ApiResponse!
 }
 
 
