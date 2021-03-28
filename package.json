@@ -23,8 +23,12 @@
   "dependencies": {
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.15",
+    "@nestjs/graphql": "^7.10.3",
     "@nestjs/platform-express": "^7.6.15",
     "@nestjs/sequelize": "^0.2.0",
+    "apollo-server-express": "^2.22.1",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.4",
     "nodemon": "^2.0.7",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",

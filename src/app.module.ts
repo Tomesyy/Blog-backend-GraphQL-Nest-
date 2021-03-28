@@ -4,10 +4,18 @@ import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Post } from './posts/post.model';
 import { PostsModule } from './posts/posts.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import {join} from 'path';
 
 @Module({
   imports: [
     PostsModule,
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql'],
+      installSubscriptionHandlers: true,
+      debug: false,
+      playground: true,
+    }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: 'localhost',

@@ -29,7 +29,7 @@ export class PostController {
     @Get(':id')
     async findOne(@Req() req: Request, @Res() res: Response) {
         let id: string = req.params.id;
-        let data = await this.postService.findOne(id);
+        let data = await this.postService.findOne(Number(id));
         if(!data){
             return res.status(HttpStatus.NOT_FOUND).json({
                 status: HttpStatus.NOT_FOUND, 
@@ -59,7 +59,7 @@ export class PostController {
     async updatePost(@Req() req: Request, @Res() res: Response) {
         let id: string = req.params.id;
         let payload: PostInterface = req.body;
-        let data = await this.postService.updateOne(id, payload);
+        let data = await this.postService.updateOne(Number(id), payload);
 
         return res.status(HttpStatus.OK).json({
             status: HttpStatus.OK, 
@@ -71,7 +71,7 @@ export class PostController {
     @Delete(':id')
     async deletePost(@Req() req: Request, @Res() res: Response) {
         let id: string = req.params.id;
-        await this.postService.deleteOne(id);
+        await this.postService.deleteOne(Number(id));
         return res.status(HttpStatus.OK).json({
             status: HttpStatus.OK, 
             message: "Post deleted successfully"
